@@ -1,22 +1,22 @@
-# Ignore Android Studio specific files
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+# Ignore Android Studio specific files in the Frontend folder
+Frontend/*.iml
+Frontend/.gradle
+Frontend/local.properties
+Frontend/.idea/caches
+Frontend/.idea/libraries
+Frontend/.idea/modules.xml
+Frontend/.idea/workspace.xml
+Frontend/.idea/navEditor.xml
+Frontend/.idea/assetWizardSettings.xml
 
 # Ignore system files
-.DS_Store
+Frontend/.DS_Store
 
-# Ignore build folders
-/build
-/captures
-.externalNativeBuild
-.cxx
+# Ignore build folders in the Frontend folder
+Frontend/build
+Frontend/captures
+Frontend/.externalNativeBuild
+Frontend/.cxx
 
 # Ignore local properties
-local.properties
+Frontend/local.properties
