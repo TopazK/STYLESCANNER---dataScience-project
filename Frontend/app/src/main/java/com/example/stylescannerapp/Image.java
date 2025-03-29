@@ -1,14 +1,25 @@
 package com.example.stylescannerapp;
 
 public class Image {
-
     private String image;
     private String country;
-    private String city;
+    private String locality;
 
-    public Image(final String image, final String country, final String city) {
+    public Image(String image, String country, String locality) {
         this.image = image;
         this.country = country;
-        this.city = city;
+        this.locality = locality;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getLocality() {
+        return locality;
     }
 }

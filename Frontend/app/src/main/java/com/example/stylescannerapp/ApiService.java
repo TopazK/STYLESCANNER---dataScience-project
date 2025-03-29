@@ -6,9 +6,6 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiService {
-
-
-    @POST("/uploadImage")
-    Call<Range> uploadImageAndGetRange(@Body Image image);
-
+    @POST("/predictimage") // Defines the API endpoint for image prediction
+    Call<PredictionResponse> uploadImageAndGetRange(@Body Image image);
 }

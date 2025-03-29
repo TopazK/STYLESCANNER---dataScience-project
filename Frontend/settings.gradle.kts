@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "StyleScannerApp"
+rootProject.name = "Frontend"
 include(":app")
+
