@@ -1,5 +1,7 @@
 package com.example.stylescannerapp;
 
+import android.util.Log;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -13,7 +15,9 @@ public class RetrofitClient {
     public static Retrofit getInstance() {
         if (retrofit == null) {
             // Logging interceptor for debugging
-            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor(message ->
+                    Log.d("Retrofit", message)  // This will print the log under "Retrofit" tag
+            );
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
             OkHttpClient client = new OkHttpClient.Builder()
@@ -23,7 +27,7 @@ public class RetrofitClient {
             // Retrofit instance
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())  // Gson integration
+                    .addConverterFactory(GsonConverterFactory.create())
                     .client(client)
                     .build();
         }

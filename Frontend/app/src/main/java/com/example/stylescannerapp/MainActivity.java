@@ -306,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
         checkLocationPermission();
 
         binding.selectImageButton.setOnClickListener(v -> openImageChooser());
-        binding.tryAgainButton.setOnClickListener(v -> {
+        binding.tryAgainButtonResult.setOnClickListener(v -> {
             showMainScreen();
             Toast.makeText(MainActivity.this, "Let's try again!", Toast.LENGTH_SHORT).show();
         });
@@ -380,6 +380,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<PredictionResponse> call, Throwable t) {
+                Log.e("Topaz", "Connection failed: " + t.getMessage(), t);
                 showLoadingError("Cannot connect right now. \n Please try again in a few minutes.");
             }
         });
@@ -396,7 +397,7 @@ public class MainActivity extends AppCompatActivity {
         viewFlipper.setDisplayedChild(0);
         binding.loadingText.setText("What a stunning style!\n\nLet's see how much it's worth:");
         binding.progressBar.setVisibility(View.VISIBLE);
-        binding.tryAgainButton.setVisibility(View.GONE);
+        binding.tryAgainButtonResult.setVisibility(View.GONE);
         binding.tryAgainButtonLoading.setVisibility(View.GONE);
         binding.uploadedImage.setImageBitmap(null);
         bitmap = null;
@@ -406,14 +407,19 @@ public class MainActivity extends AppCompatActivity {
         viewFlipper.setDisplayedChild(1);
         binding.loadingText.setText("What a stunning style!\nLet's see how much it's worth:");
         binding.progressBar.setVisibility(View.VISIBLE);
-        binding.tryAgainButton.setVisibility(View.GONE);
+        binding.tryAgainButtonLoading.setVisibility(View.GONE);
     }
 
 
     private void showResultScreen(PredictionResponse prediction) {
         viewFlipper.setDisplayedChild(2);
-        String rangeText = "Your Style Value Range:\n" + prediction.getMinRange() + " - " + prediction.getMaxRange();
+
+        String rangeText = "Your Style Value Range:" + prediction.getMinRange() + " - " + prediction.getMaxRange();
         binding.styleValueRange.setText(rangeText);
+
+        if (bitmap != null) {
+            binding.resultImage.setImageBitmap(bitmap);
+        }
     }
 
     private String bitmapToBase64(Bitmap bitmap) {

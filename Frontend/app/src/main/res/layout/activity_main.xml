@@ -110,6 +110,13 @@
             android:gravity="center"
             android:layout_marginBottom="16dp" />
 
+        <ImageView
+            android:id="@+id/resultImage"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="16dp" />
+
         <TextView
             android:id="@+id/styleValueRange"
             android:layout_width="wrap_content"
@@ -120,9 +127,8 @@
             android:gravity="center"
             android:layout_marginBottom="20dp" />
 
-        <!-- Try Again Button on Result Screen -->
         <Button
-            android:id="@+id/tryAgainButton"
+            android:id="@+id/tryAgainButtonResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Try Again"
