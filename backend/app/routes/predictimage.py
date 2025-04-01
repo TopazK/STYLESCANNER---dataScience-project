@@ -9,8 +9,15 @@ routes_bp = Blueprint('routes', __name__)
 def predict_image():
     try:
         data = request.get_json()
+        print("[DEBUG] Received data:", data)
+
+        # Print what's received
+        print("/predictimage endpoint hit")
+        print(f"Keys received: {list(data.keys())}")
+        print(f"Image (first 100 chars): {data.get('image', '')[:100]}")
+        print(f"Country: {data.get('country')}, City: {data.get('locality')}")
+
         image_base64 = data.get("image")
-        
         if not image_base64:
             return jsonify({"error": "No image provided"}), 400
 
@@ -28,4 +35,5 @@ def predict_image():
         })
 
     except Exception as e:
+        print(f"Server error: {str(e)}")  # Log the error
         return jsonify({"error": str(e)}), 500
