@@ -10,7 +10,6 @@ backend/
 │   ├── routes  
 │   ├── services  
 │   └── models  
-│
 ├── .env  
 ├── run.py  
 └── requirements.txt  
