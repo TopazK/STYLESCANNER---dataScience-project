@@ -3,4 +3,7 @@ python-dotenv
 flask-cors
 torch
 torchvision
-
+xgboost
+scikit-learn
+pandas
+numpy
