@@ -1,6 +1,5 @@
 import os
 import pickle
-import pandas as pd
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,15 +18,10 @@ def make_prediction(input_data):
     try:
         model = load_main_model()
 
-        feature_df = pd.DataFrame([input_data])
+        prediction = model.predict(input_data)
 
-        prediction = model.predict(feature_df)
-
-        # change later
-        index = 15
-
-        min_range = prediction - index
-        max_range = prediction + index
+        min_range = prediction.min().item()
+        max_range = prediction.max().item()
 
         return min_range, max_range
     except Exception as e:
